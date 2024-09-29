@@ -42,7 +42,7 @@ const schema = new mongoose.Schema(
     },
     gender: {
       type: String,
-      enum: ["male", "Female"],
+      enum: ["male", "female"],
       required: [true, "Please enter Gender"],
     },
     dob: {
