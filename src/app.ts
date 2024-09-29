@@ -33,13 +33,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("dev"));
 app.use(
-  cors()
+  cors(
+    {
+      origin: [process.env.FRONTEND_URL!,process.env.FIREBASE_URL!],
+      methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+      credentials: true,
+    }
+  )
 );
-// {
-//   origin: ["http://localhost:5173","https://mern-ecommerce-2024.firebaseapp.com"],
-//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//   credentials: true,
-// }
+
 app.get("/", (req, res) => {
   res.send("Api working");
 });
